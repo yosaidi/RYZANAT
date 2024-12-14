@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My E-Commerce Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom animation for logo */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Slide-in animation for mobile menu */
+        @keyframes slideIn {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Apply the animation to mobile menu when toggled */
+        .slide-in {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header Section -->
+    <header class="bg-[#8a6e33] text-white py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <!-- Logo -->
+            <div class="text-lg font-bold">
+                <a href="#">
+                    <!-- Replace with your actual logo path -->
+                    <img src="/static/img/logo.png" alt="RYZANAT" class="h-[100px] w-[200px]">
+                </a>
+            </div>
+
+            <!-- Navigation for large screens -->
+            <nav class="hidden md:flex space-x-6 text-sm">
+                <ul class="flex space-x-6 text-sm">
+                    <li><a href="#" class="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105">Products</a></li>
+                    <li><a href="#" class="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105">Categories</a></li>
+                    <li><a href="/personalize" class="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105">Realize the Dream</a></li>
+                    <li><a href="#" class="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105">About</a></li>
+                    <li><a href="#" class="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Hamburger Icon for small screens -->
+            <div class="md:hidden flex items-center">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <nav id="mobile-menu" class="md:hidden bg-[#8a6e33] text-white space-y-4 py-4 px-4 hidden">
+        <ul>
+            <li><a href="#" class="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105">Products</a></li>
+            <li><a href="#" class="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105">Categories</a></li>
+            <li><a href="#" class="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105">Realize the Dream</a></li>
+            <li><a href="#" class="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105">About</a></li>
+            <li><a href="#" class="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- Hero Section -->
+<section class="relative bg-gray-900 text-white">
+    <!-- Carousel Container -->
+    <div id="carousel" class="relative w-full h-[500px] overflow-hidden">
+        <!-- Carousel Images -->
+        <div class="absolute inset-0 flex transition-transform duration-1000" id="carousel-images">
+            <div class="w-full flex-shrink-0 relative">
+                <img src="/static/img/juniper.jpg" alt="Image 1" class="w-full h-full object-cover">
+                <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+                    <h4 class="text-3xl font-bold m-4 md:ml-8 lg:mt-12 max-w-lg text-center">
+                        The juniper tree is a symbol of resilience and natural beauty. Known for its evergreen foliage and aromatic wood, it thrives in diverse climates.
+                    </h4>
+                </div>
+            </div>
+            <div class="w-full flex-shrink-0 relative">
+                <img src="/static/img/rafia.jpg" alt="Image 1" class="w-full h-full object-cover">
+                <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+                    <h4 class="text-3xl font-bold m-4 md:ml-8 lg:mt-12 max-w-lg text-center">
+                        The raffia palm is renowned for its long, durable leaves, which are traditionally harvested to create natural fibers. These fibers are widely used in crafting textiles, baskets, and ropes, making the raffia palm a symbol of sustainable artistry and resourcefulness.</h4>
+                </div>
+            </div>
+            <div class="w-full flex-shrink-0 relative">
+                <img src="/static/img/zarbia.jpg" alt="Image 1" class="w-full h-full object-cover">
+                <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+                    <h4 class="text-3xl font-bold m-4 md:ml-8 lg:mt-12 max-w-lg text-center">
+                        The Moroccan zarbia, or traditional rug, is a masterpiece of craftsmanship and cultural heritage. Handwoven by skilled artisans, these rugs feature intricate patterns, vibrant colors, and a blend of wool and natural fibers. Each zarbia tells a unique story, reflecting Morocco's rich history and artistic traditions.</h4>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Arrow buttons for manual control -->
+    <div class="absolute top-1/2 left-4 transform -translate-y-1/2 text-white cursor-pointer" id="prev-btn">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+    </div>
+    <div class="absolute top-1/2 right-4 transform -translate-y-1/2 text-white cursor-pointer" id="next-btn">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+    </div>
+</section>
+<section class="py-8 bg-gray-100">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Special Offers</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white shadow-md rounded-lg p-4">
+                <img src="/static/img/product1.jpeg" alt="Product 1" class="w-full h-50 object-cover rounded-md mb-4">
+                <h3 class="text-lg font-semibold text-gray-700">Product 1</h3>
+                <p class="text-sm text-gray-600 mb-2">This is an amazing product with premium quality.</p>
+                <p class="text-gray-800 font-bold mb-2">$29.99</p>
+                <p class="text-sm text-gray-500">Quantity: 10</p>
+                <button class="mt-4 w-full bg-[#8a6e33] text-white py-2 rounded-md hover:bg-[#75572b]">Add to Cart</button>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="bg-white shadow-md rounded-lg p-4">
+                <img src="/static/img/product2.jpeg" alt="Product 2" class="w-full h-50 object-cover rounded-md mb-4">
+                <h3 class="text-lg font-semibold text-gray-700">Product 2</h3>
+                <p class="text-sm text-gray-600 mb-2">Exclusive offer for a limited time only.</p>
+                <p class="text-gray-800 font-bold mb-2">$19.99</p>
+                <p class="text-sm text-gray-500">Quantity: 5</p>
+                <button class="mt-4 w-full bg-[#8a6e33] text-white py-2 rounded-md hover:bg-[#75572b]">Add to Cart</button>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white shadow-md rounded-lg p-4">
+                <img src="/static/img/product3.jpeg" alt="Product 3" class="w-full h-50 object-cover rounded-md mb-4">
+                <h3 class="text-lg font-semibold text-gray-700">Product 3</h3>
+                <p class="text-sm text-gray-600 mb-2">High demand product available now!</p>
+                <p class="text-gray-800 font-bold mb-2">$49.99</p>
+                <p class="text-sm text-gray-500">Quantity: 3</p>
+                <button class="mt-4 w-full bg-[#8a6e33] text-white py-2 rounded-md hover:bg-[#75572b]">Add to Cart</button>
+            </div>
+
+             <!-- Card 4 -->
+             <div class="bg-white shadow-md rounded-lg p-4">
+                <img src="/static/img/product4.jpeg" alt="Product 3" class="w-full h-50 object-cover rounded-md mb-4">
+                <h3 class="text-lg font-semibold text-gray-700">Product 3</h3>
+                <p class="text-sm text-gray-600 mb-2">High demand product available now!</p>
+                <p class="text-gray-800 font-bold mb-2">$49.99</p>
+                <p class="text-sm text-gray-500">Quantity: 3</p>
+                <button class="mt-4 w-full bg-[#8a6e33] text-white py-2 rounded-md hover:bg-[#75572b]">Add to Cart</button>
+            </div>
+
+            <!-- Add more cards as needed -->
+        </div>
+    </div>
+</section>
+
+<section class="py-12 bg-[#f4f4f4]">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-800 text-center mb-8">Make the Dream a Reality</h2>
+        <p class="text-center text-gray-600 mb-6">
+            Unleash your creativity and bring your vision to life. Whether you want to upload your own design, generate unique ideas using AI, or collaborate with our expert designers, we’re here to help you craft the perfect artisanal masterpiece.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Option 1: Upload Your Own Design -->
+            <div class="bg-white shadow-md rounded-lg p-6 text-center">
+                <img src="/static/img/uploads.png" alt="Upload Design" class="mx-auto h-24 w-24 mb-4">
+                <h3 class="text-lg font-semibold text-gray-700">Upload Your Design</h3>
+                <p class="text-sm text-gray-600 mb-4">
+                    Have a design in mind? Upload your custom design and let us bring it to life.
+                </p>
+                <button class="bg-[#8a6e33] text-white py-2 px-4 rounded-md hover:bg-[#75572b]"><a href="/personalize">Get Started</a></button>
+            </div>
+
+            <!-- Option 2: Generate with AI -->
+            <div class="bg-white shadow-md rounded-lg p-6 text-center">
+                <img src="/static/img/ai.png" alt="AI Design" class="mx-auto h-24 w-24 mb-4">
+                <h3 class="text-lg font-semibold text-gray-700">Generate with AI</h3>
+                <p class="text-sm text-gray-600 mb-4">
+                    Use our AI-powered design tool to create unique and stunning patterns effortlessly.
+                </p>
+                <button class="bg-[#8a6e33] text-white py-2 px-4 rounded-md hover:bg-[#75572b]" disabled>Try AI Design</button>
+            </div>
+
+            <!-- Option 3: Contact a Designer -->
+            <div class="bg-white shadow-md rounded-lg p-6 text-center">
+                <img src="/static/img/designer.png" alt="Contact Designer" class="mx-auto h-24 w-24 mb-4">
+                <h3 class="text-lg font-semibold text-gray-700">Contact a Designer</h3>
+                <p class="text-sm text-gray-600 mb-4">
+                    Need expert advice? Reach out to one of our professional designers for guidance.
+                </p>
+                <button class="bg-[#8a6e33] text-white py-2 px-4 rounded-md hover:bg-[#75572b]">Contact Us</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-800 text-center mb-8">Latest Products</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Product 1 -->
+            <div class="bg-gray-50 shadow-md rounded-lg overflow-hidden">
+                <img src="/static/img/lamp.png" alt="Product 1" class="w-full h-58 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-700">Handcrafted Vase</h3>
+                    <p class="text-gray-600 text-sm mb-4">A stunning vase made with premium ceramic and unique patterns.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-[#8a6e33]">$45</span>
+                        <button class="bg-[#8a6e33] text-white py-1 px-4 rounded-md hover:bg-[#75572b]">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="bg-gray-50 shadow-md rounded-lg overflow-hidden">
+                <img src="/static/img/lamp2.jpeg" alt="Product 2" class="w-full h-58 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-700">Artisan Wooden Tray</h3>
+                    <p class="text-gray-600 text-sm mb-4">A beautifully crafted wooden tray for all your serving needs.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-[#8a6e33]">$30</span>
+                        <button class="bg-[#8a6e33] text-white py-1 px-4 rounded-md hover:bg-[#75572b]">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="bg-gray-50 shadow-md rounded-lg overflow-hidden">
+                <img src="/static/img/lamp3.jpeg" alt="Product 3" class="w-full h-58 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-700">Rustic Wall Art</h3>
+                    <p class="text-gray-600 text-sm mb-4">Elevate your space with this exquisite piece of rustic wall art.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-[#8a6e33]">$60</span>
+                        <button class="bg-[#8a6e33] text-white py-1 px-4 rounded-md hover:bg-[#75572b]">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-[#8a6e33] text-white py-8">
+    <div class="container mx-auto px-4">
+        <!-- Footer Top Section -->
+        <div class="flex flex-wrap justify-between items-center mb-8">
+            <!-- Logo and Tagline -->
+            <div class="w-full md:w-1/3 text-center md:text-left mb-4 md:mb-0">
+                <img src="/static/img/logo.png" alt="RYZANAT" class="h-16 mx-auto md:mx-0">
+                <p class="text-sm mt-2">Crafting Dreams Into Reality.</p>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="w-full md:w-1/3 text-center mb-4 md:mb-0">
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-200 transition">Home</a></li>
+                    <li><a href="#" class="hover:text-gray-200 transition">Products</a></li>
+                    <li><a href="#" class="hover:text-gray-200 transition">Categories</a></li>
+                    <li><a href="#" class="hover:text-gray-200 transition">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="w-full md:w-1/3 text-center md:text-right">
+                <p class="mb-2">Follow Us:</p>
+                <div class="flex justify-center md:justify-end space-x-4">
+                    <a href="#" class="hover:text-gray-200 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.46 6c-.77.34-1.6.57-2.47.67a4.26 4.26 0 001.88-2.35c-.84.49-1.77.84-2.76 1.03a4.28 4.28 0 00-7.3 3.91 12.13 12.13 0 01-8.8-4.46 4.26 4.26 0 001.32 5.71 4.23 4.23 0 01-1.93-.54v.05a4.29 4.29 0 003.43 4.21c-.7.19-1.44.23-2.18.08a4.29 4.29 0 004 2.97A8.61 8.61 0 012 18.54a12.11 12.11 0 006.55 1.92c7.88 0 12.2-6.54 12.2-12.21 0-.19 0-.37-.01-.56A8.73 8.73 0 0024 5.34c-.88.39-1.82.65-2.8.76a4.28 4.28 0 001.86-2.35z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="hover:text-gray-200 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.23 3H1.77C1.31 3 1 3.31 1 3.77v16.46c0 .46.31.77.77.77h10.56v-7.15H9.69v-2.8h2.64V8.5c0-2.6 1.56-4.02 3.87-4.02 1.1 0 2.04.08 2.32.12v2.7h-1.6c-1.26 0-1.5.6-1.5 1.48v1.94h3l-.39 2.8h-2.61V21h5.11c.46 0 .77-.31.77-.77V3.77c0-.46-.31-.77-.77-.77z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="hover:text-gray-200 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.04c-5.48 0-9.93 4.45-9.93 9.93 0 4.41 3.62 8.06 8.22 8.88v-6.26h-2.47v-2.61h2.47V9.45c0-2.44 1.5-3.8 3.69-3.8 1.04 0 1.93.08 2.19.11v2.55l-1.51.01c-1.19 0-1.42.56-1.42 1.39v1.83h2.84l-.37 2.61h-2.47v6.26c4.6-.82 8.22-4.47 8.22-8.88 0-5.48-4.45-9.93-9.93-9.93z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom Section -->
+        <div class="border-t border-gray-200 pt-4 text-center">
+            <p class="text-sm">© 2024 RYZANAT. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+        // Toggle mobile menu visibility with animation
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuBtn.addEventListener("click", () => {
+            // Toggle the visibility and apply the slide-in animation
+            mobileMenu.classList.toggle("hidden");
+            mobileMenu.classList.toggle("slide-in");
+        });
+    </script>
+    <script>
+        // Variables for the carousel
+        const carouselImages = document.getElementById("carousel-images");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        let currentIndex = 0;
+    
+        // Function to change the carousel image
+        function changeImage(index) {
+            const totalImages = carouselImages.children.length;
+            currentIndex = (index + totalImages) % totalImages; // Wrap around the images
+            carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    
+        // Automatic Carousel Transition
+        setInterval(() => {
+            changeImage(currentIndex + 1);
+        }, 5000); // Change image every 5 seconds
+    
+        // Previous Button Click
+        prevBtn.addEventListener("click", () => {
+            changeImage(currentIndex - 1);
+        });
+    
+        // Next Button Click
+        nextBtn.addEventListener("click", () => {
+            changeImage(currentIndex + 1);
+        });
+    </script>
+
+</body>
+</html>
